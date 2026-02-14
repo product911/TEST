@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question for You Fizza 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        /* Page 1 - Greeting */
+        #page1 {
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+        }
+
+        .greeting-container {
+            text-align: center;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting-container h1 {
+            color: #ff1493;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.2);
+        }
+
+        .greeting-container p {
+            color: #ff69b4;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .cat-image {
+            width: 250px;
+            height: 250px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: block;
+        }
+
+        .btn {
+            padding: 15px 50px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        .btn-yes-1 {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-yes-1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        /* Page 2 - Valentine Question */
+        #page2 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffeef8 100%);
+        }
+
+        .valentine-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            max-width: 600px;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .valentine-container h1 {
+            color: #c71585;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(199, 21, 133, 0.2);
+        }
+
+        .couple-gif {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            display: block;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes-2 {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        .btn-yes-2:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-no:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.6);
+        }
+
+        .no-choice-text {
+            display: none;
+            color: #c71585;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Page 3 - Congratulations */
+        #page3 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
+        }
+
+        .congrats-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+            max-width: 700px;
+            animation: celebrateIn 1s ease-out;
+        }
+
+        @keyframes celebrateIn {
+            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .congrats-container h1 {
+            color: #ff1493;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(255, 20, 147, 0.3);
+        }
+
+        .congrats-container p {
+            color: #c71585;
+            font-size: 1.8em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .hug-gif {
+            width: 350px;
+            height: 350px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            display: block;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff1493;
+            animation: floatHeart 4s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .greeting-container h1, .valentine-container h1 {
+                font-size: 2em;
+            }
+            
+            .congrats-container h1 {
+                font-size: 2.5em;
+            }
+            
+            .cat-image, .couple-gif, .hug-gif {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Greeting -->
+    <div id="page1" class="page active">
+        <div class="greeting-container">
+            <h1>Hey Fizza! 💖</h1>
+            <p>I have a question for you...</p>
+            <img src="https://media.tenor.com/fEqKi7FlnFsAAAAM/run-away-penguin.gif" alt="Cute Cat" class="cat-image">
+            <button class="btn btn-yes-1" onclick="goToPage2()">Yes</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Valentine Question -->
+    <div id="page2" class="page">
+        <div class="valentine-container">
+            <h1>Will You Be My Valentine? 💕</h1>
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyaXZlMTA3aHlnemQ3dTdydWVicmNyNXBsd3N2aGd0azhld2J3cWhycCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/y93x7gLXTO5dnSWCEI/giphy-downsized.gif" alt="Couple Proposing" class="couple-gif">
+            <div class="button-container">
+                <button class="btn btn-yes-2" id="yesBtn" onclick="goToPage3()">Yes</button>
+                <button class="btn btn-no" id="noBtn" onclick="handleNo()">No</button>
+            </div>
+            <p class="no-choice-text" id="noChoiceText">You have no option except be my Valentine! 💝</p>
+        </div>
+    </div>
+
+    <!-- Page 3: Congratulations -->
+    <div id="page3" class="page">
+        <div class="hearts" id="heartsContainer"></div>
+        <div class="congrats-container">
+            <h1>🎉 Congratulations! 🎉</h1>
+            <p>Yay! You said YES! 💖</p>
+            <p>You've made me the happiest person alive!</p>
+            <p>Happy Valentine's Day, my love! 💕</p>
+            <img src="https://media.tenor.com/5Ux5jcrpkHoAAAAM/a-peck-on-the-cheeks-pudgy-penguins.gif" alt="Couple Hugging" class="hug-gif">
+            <p style="font-size: 1.3em; margin-top: 30px;">I love you, Fizza! ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        function goToPage2() {
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.add('active');
+        }
+
+        function handleNo() {
+            noClickCount++;
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const noChoiceText = document.getElementById('noChoiceText');
+
+            if (noClickCount === 1) {
+                yesBtn.style.transform = 'scale(1.3)';
+                yesBtn.style.padding = '20px 60px';
+                yesBtn.style.fontSize = '1.5em';
+            } else if (noClickCount === 2) {
+                yesBtn.style.transform = 'scale(1.6)';
+                yesBtn.style.padding = '25px 70px';
+                yesBtn.style.fontSize = '1.8em';
+            } else if (noClickCount >= 3) {
+                noBtn.style.display = 'none';
+                yesBtn.style.transform = 'scale(2)';
+                yesBtn.style.padding = '30px 80px';
+                yesBtn.style.fontSize = '2em';
+                noChoiceText.style.display = 'block';
+            }
+        }
+
+        function goToPage3() {
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page3').classList.add('active');
+            createHearts();
+        }
+
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartSymbols = ['❤️', '💕', '💖', '💗', '💝', '💞'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 7000);
+                }, i * 200);
+            }
+        }
+    </script>
+</body>
+</html>
